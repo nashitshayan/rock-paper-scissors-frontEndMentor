@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+/* - Mobile: 375px
+- Desktop: 1366px */
+
+:root{
+   
+     /*  */
+    --clr-img-bg :  rgb(252, 241, 241);
+
+}
+
+html{
+    min-height: 100%;
+}
+body{
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    color: whitesmoke;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    min-height: fit-content;
+    
+}
+
+#outer-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: min(90%, 40.5em);
+    margin: 1rem auto;
+}
+#outer-wrapper>*{
+    flex: 1;
+}
+header{
+    border: 3px solid hsl(217, 16%, 45%);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.title{
+    font-size: 2rem;
+    max-width: 3rem;
+    line-height: 0.8;
+}
+.scorecard{
+    background-color: whitesmoke;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+}
+.score-title{
+    font-size: 0.75rem;
+    color: hsl(229, 64%, 46%);
+    letter-spacing: 0.2rem;
+}
+.score{
+    font-size: 3.5rem;
+    color:  hsl(229, 25%, 31%);
+    padding: 0;
+    margin-top: -0.5rem;
+    margin-left: -0.1rem;
+}
+
+main{
+   display: flex;
+   flex-flow: row wrap;
+   gap: 3rem;
+   justify-content: center;
+   align-items: center;
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+   max-width: 375px;
+   margin-left: auto;
+   margin-right: auto;
+   position: relative;
+   /* border: 1px solid red; */
+}
+
+
+#paper, #rock, #scissors{
+    max-width: 85px;
+    max-height: 85px;
+    position: relative;
+    border-radius: 50%;
+    padding: 16px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paper img, #rock img, #scissors img{
+    border-radius: 50%;
+    max-height: 35px;
+    max-width: 35px;
+    padding: 24px;
+    object-fit:scale-down;
+    box-shadow: 0px 5px 2px 0px rgb(209, 201, 201) inset;
+}
+
+
+#paper{
+    background: linear-gradient(hsl(230, 89%, 62%),hsl(230, 89%, 65%));
+    box-shadow: 0px -5px 2px 0px #354eca inset;
+}
+#paper img{
+    background: var(--clr-img-bg);
+}
+
+#scissors{
+    background: linear-gradient(hsl(39, 90%, 46%),hsl(40, 84%, 53%));
+    box-shadow: 0px -5px 2px 0px rgb(175, 115, 3) inset;
+}
+#scissors img{
+    background: var(--clr-img-bg);
+}
+
+#rock{
+    background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+    box-shadow: 0px -5px 2px 0px rgb(165, 12, 12) inset;
+}
+#rock img{
+    background: var(--clr-img-bg);
+}
+
+#emptyCircle{
+    width: 50px;
+    height: 50px;
+    padding: 24px;
+    border-radius: 50%;
+    background-color: #1c2241;
+    margin-bottom: 1.062rem;
+    /* border: 1px solid red; */
+}
+#outputDivOne, #outputDivTwo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    letter-spacing: 0.1rem;
+     flex: 1 1 auto;
+  
+    
+}
+
+#roundResultDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    margin-top: -3.5rem;
+
+}
+#roundResultDiv div{
+    font-size: 3rem;
+    font-weight: 700;
+}
+#playAgain{
+    padding: 0.75rem 2.5rem;
+    border-radius: 8px;
+    letter-spacing: 0.1rem;
+    color: #1c2241;
+    font-weight: 700;
+}
+
+#rule-btn{
+    border: 2px solid hsl(217, 16%, 45%);
+    border-radius: 8px;
+    padding: 0.5rem 2rem;
+    max-width: fit-content;
+    margin: 0 auto;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.bar1, .bar2, .bar3 {
+    position: absolute;
+    height: 16px;
+    width: 140px;
+    background-color: #181e3a;
+    z-index: -1;
+}
+
+.bar1{
+    top: 50px;
+}
+.bar2{
+    top: 155px;
+    transform: rotate(60deg);
+    left: 60px;
+}
+.bar3{
+    top: 155px;
+    transform: rotate(-60deg);
+    right: 60px;
+}
+
+
+/* rule page */
+/* .outer-wrapper{
+    display: none;
+}
+body{
+    background-image: none;
+} */
+
+#hidden-wrapper{
+    height: 100vh;
+    display: none;
+    color: #222;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.rule-header{
+    font-size: 2.5rem;
+}
+
+.rules{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    opacity: 50%;
+    max-width: 375px;
+}
+
+#rule-paper, #rule-rock, #rule-scissors{
+    max-width: 85px;
+    max-height: 85px;
+    position: relative;
+    border-radius: 50%;
+    padding: 16px;
+    background-color: rgb(83, 83, 83);
+   
+}
+
+#rule-paper img, #rule-rock img, #rule-scissors img{
+    border-radius: 50%;
+    max-height: 35px;
+    max-width: 35px;
+    padding: 24px;
+    object-fit:scale-down;
+    background: var(--clr-img-bg);
+    
+}
+
+.arrow-top, .arrow-left, .arrow-right, .arrow, .arrow-line-1,.arrow-line-2, .arrow-line-3, .beats-right, .beats-top, .beats-left{
+    position: absolute;
+    font-size: 0.75em;
+}
+
+
+.arrow-line-1, .arrow-line-2, .arrow-line-3{
+    height: 3px;
+    width: 30px;
+    background-color: rgb(83, 83, 83);
+}
+.arrow-line-1{
+    top: 10px;
+}
+.arrow-line-2{
+    right: 120px;
+    top: 145px;
+    transform: rotate(-60deg);
+}
+.arrow-line-3{
+    left: 120px;
+    top: 145px;
+    transform: rotate(60deg);
+}
+
+.arrow{
+  border: solid rgb(83, 83, 83);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  width: 4px;
+  height: 4px;
+}
+
+.arrow-top{
+    top: 5px;
+    left: 164px;
+    transform: rotate(135deg);
+}
+.arrow-right{
+    top: 133px;
+    right: 124px;
+    transform: rotate(249deg);
+}
+.arrow-left{
+    top: 133px;
+    left: 124px;
+    transform: rotate(195deg);
+}
+
+.beats-top{
+    top: -15px;
+}
+.beats-right{
+    right: 85px;
+    top: 142px;
+}
+.beats-left{
+    left: 85px;
+    top: 142px;
+}
+
+#btn-rules-cancel{
+    background: transparent;
+    border: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    color:  rgb(83, 83, 83);
+    opacity: 50%;
+   
+}
+
+
+/* Attribution */
+
+.attribution{
+    margin-inline: auto;
+}
+.attribution a{
+   
+    color: var(--clr-img-bg);
+}
