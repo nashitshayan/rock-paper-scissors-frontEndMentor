@@ -74,7 +74,7 @@ function playCallback() {
     {setTimeout(()=>{
         outputDivTwo.removeChild(emptyCircle);
         outputDivTwo.insertBefore(divComputerChoice, computerText);
-    }, 500);}
+    }, 300);}
 
 
     //chk if there is empty div present, if yes, remove it.
