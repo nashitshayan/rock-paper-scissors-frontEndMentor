@@ -6,7 +6,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./styles.css">
-  <script src="./rps.js" defer></script>
+  
   <title>Frontend Mentor | Rock, Paper, Scissors</title>
 </head>
 <body>
@@ -34,22 +34,44 @@
         <div id="rock">
           <img  src="./images/icon-rock.svg" alt="rock">
         </div>
-    
-      
-      
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </main>
-    
-   
-    <div id="rule-btn">RULES</div>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
 
-    <div class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="https://github.com/nashitshayan">Nashit Shayan Khan</a>.
-    </div>
+        
+          <div id="outputDivOne" class="hidden">
+            <div class="divPlayerChoice">
+              <img src="" alt="playerChoice" class="imgPlayerChoice">
+            </div>
+            YOU PICKED
+          </div>
+        
+       
+          <div id="desktop-roundResultDiv" class="hidden">
+            <div></div>
+            <button id="playAgain">PLAY AGAIN</button>
+          </div>
+      
+       
+          <div id="outputDivTwo" class="hidden">
+            <div class="divComputerChoice hidden">
+              <img src="" alt="computerChoice" class="imgComputerChoice">
+            </div>
+            <div id="emptyCircle"></div>
+            THE HOUSE PICKED
+          </div>
+        
+       
+    </main>
+   
+      <div id="roundResultDiv" >
+        <div class="result"></div>
+        <button id="playAgain">PLAY AGAIN</button>
+      </div>
+   
   </div>
+  
+  <div id="rule-btn">RULES</div>
 
   <div id="hidden-wrapper">
     <div class="rule-header">
@@ -78,6 +100,11 @@
     </div>
     <button id="btn-rules-cancel">X</button>
   </div>
-  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/nashitshayan">Nashit Shayan Khan</a>.
+  </div>
+
+  <script src="./rps.js" ></script>
 </body>
 </html>
