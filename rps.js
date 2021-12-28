@@ -8,45 +8,36 @@ const mainDiv = document.querySelector('main');
 let scoreCount=0;
 
 
-//the player choice output  
-const outputDivOne= document.createElement('div')
-outputDivOne.id='outputDivOne';
-const divPlayerChoice= document.createElement('div');
-const imgPlayerChoice= document.createElement('img');
-divPlayerChoice.appendChild(imgPlayerChoice);
-const playerText= document.createTextNode('YOU PICKED');
-outputDivOne.appendChild(divPlayerChoice);
-outputDivOne.appendChild(playerText);
 
 
-//computer choice output
-const outputDivTwo= document.createElement('div');
-outputDivTwo.id='outputDivTwo';
-const divComputerChoice= document.createElement('div');
-const imgComputerChoice= document.createElement('img');
-divComputerChoice.appendChild(imgComputerChoice);
-const emptyCircle= document.createElement('div');
-emptyCircle.id= 'emptyCircle';
-const computerText = document.createTextNode('THE HOUSE PICKED');
+const outputDivOne= document.getElementById('outputDivOne');
+const outputDivTwo= document.getElementById('outputDivTwo');
+const divComputerChoice= document.querySelector('.divComputerChoice');
+divComputerChoice.style.display='none';
+const imgComputerChoice= document.querySelector('.imgComputerChoice');
+let btnPlayAgain = document.querySelectorAll('.playAgain')
 
-outputDivTwo.appendChild(emptyCircle); //by default there is empty circle, when round is played, computer result is added and this is removed
-outputDivTwo.appendChild(computerText);
+const divPlayerChoice = document.querySelector('.divPlayerChoice');
+const imgPlayerChoice= document.querySelector('.imgPlayerChoice');
+const  roundResultDiv = document.getElementById('roundResultDiv');
+const result= document.getElementById('result');
+const emptyCircle= document.getElementById('emptyCircle')
+let playerWin= document.createTextNode('YOU WIN');
+let computerWin= document.createTextNode('YOU LOSE');
+let draw= document.createTextNode('DRAW');
+let desktopPlayerWin= document.createTextNode('YOU WIN');
+let desktopComputerWin= document.createTextNode('YOU LOSE');
+let desktopDraw= document.createTextNode('DRAW');
 
+const desktopRoundResultDiv = document.getElementById('desktopRoundResultDiv');
 
-// output of each round (the actual result i.e YOU WIN or YOU LOSE will be added in the respective fns of the three event listeners)
-const roundResultDiv= document.createElement('div');
-roundResultDiv.id=('roundResultDiv')
-const result= document.createElement('div');
-roundResultDiv.appendChild(result);
-const playerWin= document.createTextNode('YOU WIN');
-const computerWin= document.createTextNode('YOU LOSE');
-const draw= document.createTextNode('DRAW');
-const btnPlayAgain= document.createElement('button');
-btnPlayAgain.textContent= 'PLAY AGAIN';
-btnPlayAgain.id='playAgain';
-roundResultDiv.appendChild(btnPlayAgain);
+const desktopResult= document.getElementById('desktopResult');
 
-
+var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+if(width>768)
+{
+   
+}
 function playCallback() {
     let childrenNodeList= mainDiv.children;
     for(let eachChild of childrenNodeList)
@@ -55,10 +46,8 @@ function playCallback() {
     }
     outputDivOne.style.display='flex';
     outputDivTwo.style.display='flex';
-    roundResultDiv.style.display='flex';
-
-    mainDiv.appendChild(outputDivOne);
-    mainDiv.appendChild(outputDivTwo);
+   
+    
 
     const computerChoice= computerPlay();
     divComputerChoice.id= computerChoice;
@@ -72,15 +61,20 @@ function playCallback() {
 
     if(document.getElementById('emptyCircle')) 
     {setTimeout(()=>{
-        outputDivTwo.removeChild(emptyCircle);
-        outputDivTwo.insertBefore(divComputerChoice, computerText);
+       emptyCircle.style.display='none';
+       divComputerChoice.style.display='flex';
     }, 300);}
 
-
-    //chk if there is empty div present, if yes, remove it.
-
-    
-
+    setTimeout(()=>{
+        roundResultDiv.style.display='flex';
+        if(width>768)
+     {
+         roundResultDiv.style.display='none';
+         desktopRoundResultDiv.style.display='flex'
+         mainDiv.style.width= '768px';
+         mainDiv.style.marginLeft ='-3.5rem';
+ }
+     }, 400);
     return computerChoice;
 }
 
@@ -88,31 +82,31 @@ function displayResult(resultCode){
     if(resultCode===1)
     {   
         result.appendChild(playerWin);
-        mainDiv.insertAdjacentElement("afterend", roundResultDiv);
+        desktopResult.appendChild(desktopPlayerWin);
         score.textContent= ++scoreCount;
     }
     else if(resultCode===-1)
     {
         result.appendChild(computerWin);
-        mainDiv.insertAdjacentElement("afterend", roundResultDiv);
+        desktopResult.appendChild(desktopComputerWin);
     }
     else
     {
         result.appendChild(draw);
-        mainDiv.insertAdjacentElement("afterend", roundResultDiv);
+        desktopResult.appendChild(desktopDraw);
     }
 }
 
 //PLAYER CHOSE ROCK
 rock.addEventListener('click', ()=>{
    
-    let computerChoice = playCallback();
+     let computerChoice = playCallback();
     divPlayerChoice.id= 'rock';
     imgPlayerChoice.src="./images/icon-rock.svg";
     let resultCode = playRound('rock', computerChoice);
     result.textContent='';
+    desktopResult.textContent='';
     displayResult(resultCode);
-
 })
 
 // PLAYER CHOSE PAPER
@@ -123,6 +117,7 @@ paper.addEventListener('click', ()=>{
     imgPlayerChoice.src="./images/icon-paper.svg";
     let resultCode = playRound('paper', computerChoice);
     result.textContent='';
+    desktopResult.textContent='';
     displayResult(resultCode);
 })
 
@@ -134,31 +129,36 @@ scissors.addEventListener('click', ()=>{
     imgPlayerChoice.src="./images/icon-scissors.svg";
     let resultCode = playRound('scissors', computerChoice);
     result.textContent='';
+    desktopResult.textContent='';
     displayResult(resultCode);
 })
 
 
+
 //PLAY AGAIN FUNCTION
-
-btnPlayAgain.addEventListener('click', ()=>{
+console.log(btnPlayAgain)
+ btnPlayAgain.forEach(btn=> btn.addEventListener('click', ()=>{
     
-    
+    mainDiv.style.width= '375px';
+    mainDiv.style.marginLeft ='auto';
     let childrenNodeList= mainDiv.children;
-    for(let eachChild of childrenNodeList)
-    {
-        if(eachChild.style.display==='none')
+     for(let eachChild of childrenNodeList)
+     {
+
+         if(eachChild.style.display==='none')
             eachChild.style.display='block';
-    }
-    outputDivOne.style.display='none';
-    outputDivTwo.style.display='none';
-    roundResultDiv.style.display='none';
-
+     }
+     outputDivOne.style.display='none';
+     outputDivTwo.style.display='none';
+     roundResultDiv.style.display='none';
+     desktopRoundResultDiv.style.display='none';
+     emptyCircle.style.display='block';
+     divComputerChoice.style.display='none';
+  
     
-    outputDivTwo.removeChild(divComputerChoice); 
-    outputDivTwo.insertBefore(emptyCircle, computerText);
+}))
 
-})
-
+// console.log(result)
 
 //RULES
 
@@ -167,13 +167,24 @@ const cancelBtn = document.getElementById('btn-rules-cancel');
 const mainWrapper=  document.getElementById('outer-wrapper');
 const rulesWrapper=  document.getElementById('hidden-wrapper');
 
+
 ruleBtn.addEventListener('click', ()=> {
-    mainWrapper.style.display = 'none';
+    console.log()
+    Array.from(document.body.children).map(childNode=>{
+        childNode.style.display = 'none';
+    })
+    //mainWrapper.style.display = 'none';
+
     rulesWrapper.style.display= 'flex';
     document.body.style.backgroundImage='none';
 })
 
 cancelBtn.addEventListener('click', ()=> {
+
+    Array.from(document.body.children).map(childNode=>{
+        if(childNode!= document.body.lastElementChild)
+            childNode.style.display = 'block';
+    })
     mainWrapper.style.display = 'flex';
     rulesWrapper.style.display= 'none';
     document.body.style.backgroundImage='linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%))';
@@ -228,3 +239,56 @@ function playRound(playerSelection, computerSelection)
     }
 
 }
+
+
+
+//the player choice output  
+// const outputDivOne= document.createElement('div')
+// outputDivOne.id='outputDivOne';
+// const divPlayerChoice= document.createElement('div');
+// const imgPlayerChoice= document.createElement('img');
+// divPlayerChoice.appendChild(imgPlayerChoice);
+// const playerText= document.createTextNode('YOU PICKED');
+// outputDivOne.appendChild(divPlayerChoice);
+// outputDivOne.appendChild(playerText);
+
+//for desktop
+// const mediaQuery= window.matchMedia('(min-width: 768px');
+// if(mediaQuery.matches)
+// {
+//     const ResultDiv= document.createElement('div');
+//     ResultDiv.id=('roundResultDiv');
+//     ResultDiv.appendChild(result);
+//     ResultDiv.appendChild(btnPlayAgain);
+//     outputDivOne.insertAdjacentElement(ResultDiv);
+// }
+
+
+//computer choice output
+// const outputDivTwo= document.createElement('div');
+// outputDivTwo.id='outputDivTwo';
+// const divComputerChoice= document.createElement('div');
+// const imgComputerChoice= document.createElement('img');
+// divComputerChoice.appendChild(imgComputerChoice);
+// const emptyCircle= document.createElement('div');
+// emptyCircle.id= 'emptyCircle';
+// const computerText = document.createTextNode('THE HOUSE PICKED');
+
+//outputDivTwo.appendChild(emptyCircle); //by default there is empty circle, when round is played, computer result is added and this is removed
+// outputDivTwo.appendChild(computerText);
+
+
+// output of each round (the actual result i.e YOU WIN or YOU LOSE will be added in the respective fns of the three event listeners)
+// const roundResultDiv= document.createElement('div');
+// roundResultDiv.id=('roundResultDiv')
+// let result= document.createElement('div');
+// roundResultDiv.appendChild(result);
+
+// let btnPlayAgain= document.createElement('button');
+// btnPlayAgain.textContent= 'PLAY AGAIN';
+// btnPlayAgain.id='playAgain';
+// roundResultDiv.appendChild(btnPlayAgain);
+
+
+
+        // mainDiv.insertAdjacentElement("afterend", roundResultDiv);

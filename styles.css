@@ -76,7 +76,7 @@ main{
    align-items: center;
    margin-top: 5rem;
    margin-bottom: 5rem;
-   max-width: 375px;
+   width: 375px;
    margin-left: auto;
    margin-right: auto;
    position: relative;
@@ -85,12 +85,11 @@ main{
 
 
 #paper, #rock, #scissors{
-    max-width: 85px;
-    max-height: 85px;
+    width: 85px;
+    height: 85px;
     position: relative;
     border-radius: 50%;
     padding: 16px;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,8 +97,8 @@ main{
 
 #paper img, #rock img, #scissors img{
     border-radius: 50%;
-    max-height: 35px;
-    max-width: 35px;
+    height: 35px;
+    width: 35px;
     padding: 24px;
     object-fit:scale-down;
     box-shadow: 0px 5px 2px 0px rgb(209, 201, 201) inset;
@@ -140,19 +139,19 @@ main{
     /* border: 1px solid red; */
 }
 #outputDivOne, #outputDivTwo{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     letter-spacing: 0.1rem;
      flex: 1 1 auto;
-  
+   
     
 }
 
-#roundResultDiv{
-    display: flex;
+#roundResultDiv, #desktopRoundResultDiv{
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -161,11 +160,14 @@ main{
     margin-top: -3.5rem;
 
 }
-#roundResultDiv div{
+#desktopRoundResultDiv{
+    margin: 0;
+}
+#roundResultDiv div, #desktopRoundResultDiv div{
     font-size: 3rem;
     font-weight: 700;
 }
-#playAgain{
+.playAgain{
     padding: 0.75rem 2.5rem;
     border-radius: 8px;
     letter-spacing: 0.1rem;
@@ -335,9 +337,79 @@ body{
 /* Attribution */
 
 .attribution{
-    margin-inline: auto;
+    padding: 2rem;
+    text-align: center;
 }
 .attribution a{
    
     color: var(--clr-img-bg);
+}
+
+
+@media only screen and (min-width: 768px){
+    /* for desktop */
+    main {
+        gap: 5rem;
+        
+    }
+
+    
+
+    #emptyCircle{
+        width: 70px;
+        height: 70px;
+       
+    }
+#paper, #rock, #scissors{
+    width: 115px;
+    height: 115px;
+   
+}
+
+#paper img, #rock img, #scissors img{
+    height: 65px;
+    width: 65px;
+   
+}
+#rule-btn{
+    margin-left: auto;
+    margin-right: 2rem;
+    
+}
+#outputDivOne div, #outputDivTwo div {
+   order: 2;
+  
+}
+#outputDivOne, #outputDivTwo{
+    gap: 2rem;
+}
+
+
+.bar1, .bar2, .bar3 {
+    height: 16px;
+    width: 140px;
+}
+
+.bar1{
+    top: 65px;
+}
+.bar2{
+    top: 165px;
+    transform: rotate(60deg);
+    left: 50px;
+}
+.bar3{
+    top: 165px;
+    transform: rotate(-60deg);
+    right: 50px;
+}
+
+}
+#desktopRoundResultDiv{
+    display: none;
+    flex-direction: column;
+    
+}
+.hidden{
+    display: none;
 }
