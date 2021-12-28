@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <script src="./rps.js" defer></script>
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./styles.css">
   
@@ -47,9 +47,9 @@
           </div>
         
        
-          <div id="desktop-roundResultDiv" class="hidden">
-            <div></div>
-            <button id="playAgain">PLAY AGAIN</button>
+          <div id="desktopRoundResultDiv" >
+            <div id="desktopResult"></div>
+            <button id="desktopPlayAgain" class="playAgain">PLAY AGAIN</button>
           </div>
       
        
@@ -65,12 +65,12 @@
     </main>
    
       <div id="roundResultDiv" >
-        <div class="result"></div>
-        <button id="playAgain">PLAY AGAIN</button>
+        <div id="result"></div>
+        <button class="playAgain">PLAY AGAIN</button>
       </div>
    
   </div>
-  
+
   <div id="rule-btn">RULES</div>
 
   <div id="hidden-wrapper">
@@ -102,9 +102,10 @@
   </div>
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/nashitshayan">Nashit Shayan Khan</a>.
+    Coded by <a href="https://github.com/nashitshayan" target="_blank">Nashit Shayan Khan</a>.
+    <a href="https://github.com/nashitshayan/rock-paper-scissors-frontEndMentor" target="_blank">Project Github repo</a>
   </div>
 
-  <script src="./rps.js" ></script>
+ 
 </body>
 </html>
