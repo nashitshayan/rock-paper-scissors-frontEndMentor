@@ -93,7 +93,11 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    }
+
+    #paper:hover, #rock:hover, #scissors:hover{
+        cursor: pointer;
+    }
 
 #paper img, #rock img, #scissors img{
     border-radius: 50%;
@@ -146,8 +150,6 @@ main{
     gap: 1rem;
     letter-spacing: 0.1rem;
      flex: 1 1 auto;
-   
-    
 }
 
 #roundResultDiv, #desktopRoundResultDiv{
@@ -173,6 +175,11 @@ main{
     letter-spacing: 0.1rem;
     color: #1c2241;
     font-weight: 700;
+    transition: 0.3s ease-in-out;
+}
+.playAgain:hover{
+    cursor: pointer;
+    background-color: hsl(223, 6%, 79%);
 }
 
 #rule-btn{
@@ -184,6 +191,11 @@ main{
     letter-spacing: 0.2rem;
     text-align: center;
     margin-bottom: 5rem;
+    transition: 0.2s ease-in-out;
+}
+#rule-btn:hover,#btn-rules-cancel {
+    cursor: pointer;
+    background-color: hsl(217, 16%, 45%);
 }
 
 .bar1, .bar2, .bar3 {
@@ -325,12 +337,17 @@ body{
 
 #btn-rules-cancel{
     background: transparent;
-    border: none;
+    border: 2px solid rgb(83, 83, 83);
+    border-radius: 50%;
     font-size: 1.1em;
     font-weight: 600;
     color:  rgb(83, 83, 83);
     opacity: 50%;
-   
+    transition: 0.3s ease-in-out;
+}
+#btn-rules-cancel:hover{
+    background-color: rgb(43, 41, 41);
+    color: white;
 }
 
 
